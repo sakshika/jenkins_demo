@@ -265,7 +265,7 @@
 				<version>2.1</version>
 				<configuration>
 					<server>myserver</server>
-					<url>http://172.27.59.144:8080/</url>
+					<url>http://172.27.59.147:8088/</url>
 					<username>admin</username>
 					<password>admin</password>
 					<path>/EMS_Hibernate1</path>

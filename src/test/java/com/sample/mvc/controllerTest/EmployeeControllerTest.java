@@ -49,7 +49,7 @@ public class EmployeeControllerTest {
 	        this.mockMvc = MockMvcBuilders.standaloneSetup(employeeController).build();
 }
 	    
-	    @Test
+	  /*  @Test
 	    public void testAddEmployee() throws Exception {
 	     
 	    	     
@@ -60,7 +60,7 @@ public class EmployeeControllerTest {
 	                .andExpect(view().name("redirect:list"))
 	                .andExpect(model().attributeExists("employeeCommand"));
 	     
-	    }
+	    }*/
 	    
 	    @Test
 		public void findById()
