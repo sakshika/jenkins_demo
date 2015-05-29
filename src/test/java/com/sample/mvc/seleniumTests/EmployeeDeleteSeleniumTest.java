@@ -1,4 +1,4 @@
-/*package com.sample.mvc.seleniumTests;
+package com.sample.mvc.seleniumTests;
 
 
 
@@ -19,7 +19,7 @@ public class EmployeeDeleteSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://172.27.59.147:8088/EmployeeApplication/list.jsp";
+    baseUrl = "http://172.27.59.119:8088/EmployeeApplication/list.jsp";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -40,4 +40,3 @@ public class EmployeeDeleteSeleniumTest {
 
  
 }
-*/

@@ -1,4 +1,4 @@
-/*package com.sample.mvc.seleniumTests;
+package com.sample.mvc.seleniumTests;
 
 
 
@@ -18,7 +18,7 @@ public class EmployeeEditSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://172.27.59.147:8088/EmployeeApplication/list.jsp";
+    baseUrl = "http://172.27.59.119:8088/EmployeeApplication/list.jsp";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -28,9 +28,9 @@ public class EmployeeEditSeleniumTest {
    
     driver.findElement(By.xpath("(//a[contains(text(),'edit')])[1]")).click();
     driver.findElement(By.name("name")).clear();
-    driver.findElement(By.name("name")).sendKeys("Ruuuu");
+    driver.findElement(By.name("name")).sendKeys("sakshi");
     driver.findElement(By.name("city")).clear();
-    driver.findElement(By.name("city")).sendKeys("Viiiii");
+    driver.findElement(By.name("city")).sendKeys("pune");
     driver.findElement(By.id("EditEmployee")).click();
  
     
@@ -45,4 +45,3 @@ public class EmployeeEditSeleniumTest {
  
 }
 
-*/

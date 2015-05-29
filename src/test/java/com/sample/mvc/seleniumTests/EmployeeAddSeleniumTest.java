@@ -16,7 +16,7 @@ public class EmployeeAddSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://172.27.59.147:8088/EmployeeApplication/home.jsp";
+    baseUrl = "http://172.27.59.119:8088/EmployeeApplication/home.jsp";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -25,11 +25,11 @@ public class EmployeeAddSeleniumTest {
     driver.get(baseUrl + "");
     driver.findElement(By.id("AddEmployeeLink")).click();
     driver.findElement(By.name("code")).clear();
-    driver.findElement(By.name("code")).sendKeys("104");
+    driver.findElement(By.name("code")).sendKeys("56");
     driver.findElement(By.name("name")).clear();
-    driver.findElement(By.name("name")).sendKeys("Sakshi");
+    driver.findElement(By.name("name")).sendKeys("jhgf");
     driver.findElement(By.name("city")).clear();
-    driver.findElement(By.name("city")).sendKeys("Pune");
+    driver.findElement(By.name("city")).sendKeys("gfd");
     driver.findElement(By.id("SubmitEmployee")).click();
   }
 
