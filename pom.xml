@@ -20,23 +20,23 @@
 			<url>http://repo.jenkins-ci.org/public/</url>
 		</repository>
 		
-		<!-- <repository>
+		<repository>
 		<id>central</id>
 		<name>admin</name>
 		<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
       <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
 		<url>http://localhost:8082/nexus/content/repositories/central/</url>
 		
-		<releases>
+		<!-- <releases>
 			<enabled>true</enabled>
 			<updatePolicy>always</updatePolicy>
 		</releases>
 		<snapshots>
 			<enabled>true</enabled>
 			<updatePolicy>always</updatePolicy>
-			</snapshots>
+			</snapshots> -->
 			
-		</repository> -->
+		</repository>
 		
 		</repositories>
 
