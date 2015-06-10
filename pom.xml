@@ -4,25 +4,88 @@
 	<groupId>com.alm.web</groupId>
 	<artifactId>EmployeeApplicationSprint4</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.1.RELEASES</version>
 	<name>Employee Management System</name>
 	<url>http://maven.apache.org</url>
 
 	<repositories>
-		<repository>
+
+		<!-- <repository>
 			<id>spring.test-mvc</id>
 			<url>http://repo.springsource.org/libs-milestone</url>
+		</repository> -->
+		
+		<repository>
+		<id>central</id>
+		<name>admin</name>
+		<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+      <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+		<url>http://localhost:8082/nexus/content/repositories/central/</url>
+		
+		<!-- <releases>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+			</snapshots> -->
+			
 		</repository>
-	</repositories>
+		
+		</repositories>
 
+ <distributionManagement>
+ 
+  <repository>
+    <id>releases</id>
+    <name>admin</name>
+    <url>http://localhost:8082/nexus/content/repositories/releases/</url>
+  </repository>
+  
+   <snapshotRepository>
+    <id>snapshots</id>
+    <name>admin</name>
+    <url>http://localhost:8082/nexus/content/repositories/snapshots/</url>
+  </snapshotRepository>
+  
+  
+</distributionManagement>
+		
+		
 	<dependencies>
 		<!-- Selenium -->
+		
+		<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>2.4.3</version>
+</dependency>
+		
+		
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>4.0.6.RELEASE</version>
+</dependency>
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context-support</artifactId>
+	<version>4.0.6.RELEASE</version>
+</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
 			<version>2.42.2</version>
 		</dependency>
+
+<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-firefox-driver</artifactId>
+	<version>2.45.0</version>
+</dependency>
+
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -213,11 +276,22 @@
 			<version>3.0.1</version>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>testInProgress-client</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		
+		
 	</dependencies>
-
+	
 	<build>
 		<finalName>EmployeeApplication</finalName>
 		<plugins>
+	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -240,7 +314,7 @@
 				mnmUUnpttrorsmmmmmUUnpttrorsmmmmmUU3vYXdbUUn]]>
 					</license>
 					<targetPercentage>10%</targetPercentage>
-					<jdk>1.7</jdk>
+					<jdk>1.7</jdk> 
 					<generatePdf>true</generatePdf>
 					<generateXml>true</generateXml>
 					<generateHtml>true</generateHtml>
@@ -259,7 +333,7 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
@@ -294,70 +368,69 @@
 
 				</executions>
 			</plugin>
+ -->
 
 
+</plugins>
+<pluginManagement>
+	<plugins>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-war-plugin</artifactId>
+		<version>2.5</version>
+	      <configuration>
+			 <WebXml>src\main\webapp\WEB-INF\web.xml</WebXml>
+			 <webResources>
+				<resource>
+				<!-- this is relative to the pom.xml directory -->
+				<directory>src\main\webapp\jsp</directory>
+				<!-- the list has a default value of ** -->
+				<includes>
+					<include>**/*.jsp</include>
+				</includes>
+					</resource>
+				</webResources>
+			</configuration>
+	 </plugin>
+	 
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>2.0</version>
+		 <configuration>
+			<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+			<sonar.language>java</sonar.language>
+			<sonar.exclusions> **/test/* </sonar.exclusions>
+		</configuration>
+			<executions>
+				<execution>
+					<phase>verify</phase>
+						<goals>
+						<goal></goal>
+						</goals>
+					</execution>
+				</executions>
+		 </plugin>
 
-		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.5</version>
-					<configuration>
-						<WebXml>src\main\webapp\WEB-INF\web.xml</WebXml>
-						<webResources>
-							<resource>
-								<!-- this is relative to the pom.xml directory -->
-								<directory>src\main\webapp\jsp</directory>
-								<!-- the list has a default value of ** -->
-								<includes>
-									<include>**/*.jsp</include>
-								</includes>
-							</resource>
-						</webResources>
-					</configuration>
-				</plugin>
-
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>sonar-maven-plugin</artifactId>
-					<version>2.0</version>
-					<configuration>
-						<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-						<sonar.language>java</sonar.language>
-						<sonar.exclusions> **/test/* </sonar.exclusions>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>verify</phase>
-							<goals>
-								<goal></goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.10</version>
+		 <!-- <plugin>
+			 <groupId>org.apache.maven.plugins</groupId>
+			 <artifactId>maven-surefire-plugin</artifactId>
+			 <version>2.10</version>
 
 
-					<!-- <configuration> <excludes> <exclude>**/EmployeeControllerTest.java</exclude> 
-						<exclude>**/EmployeeAddControllerTest.java</exclude> </excludes> </configuration> -->
-					<configuration>
-						<!-- Skip the normal tests, we'll run them in the integration-test 
-							phase <skip>true</skip> -->
+					<configuration> <excludes> <exclude>**/EmployeeControllerTest.java</exclude> 
+						<exclude>**/EmployeeAddControllerTest.java</exclude> </excludes> </configuration>
+			 <configuration>
+						Skip the normal tests, we'll run them in the integration-test 
+							phase <skip>true</skip>
 
 						
-						<excludes>
-							<exclude>**/EmployeeDeleteSeleniumTest.java</exclude>
-							<exclude>**/EmployeeAddSeleniumTest.java</exclude>
-							<exclude>**/EmployeeEditSeleniumTest.java</exclude>
-						</excludes> 
-					</configuration>
+				  <excludes>
+						<exclude>**/EmployeeDeleteSeleniumTest.java</exclude>
+						<exclude>**/EmployeeAddSeleniumTest.java</exclude>
+						<exclude>**/EmployeeEditSeleniumTest.java</exclude>
+				  </excludes> 
+			 </configuration>
 					<executions>
 						<execution>
 							<phase>integration-test</phase>
@@ -371,16 +444,89 @@
 								<exclude>**/com.sample.mvc.service/</exclude>
 								<exclude>**/com.sample.mvc.dao/</exclude>
 							</excludes>
-
 							</configuration> 
 						</execution>
 					</executions>  
-
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-
-
+				</plugin> -->
+				
+				
+	<plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </execution>
+        </executions>
+    </plugin>
+    
+	<plugin>
+	        <groupId>org.sonatype.plugins</groupId>
+	        <artifactId>nexus-staging-maven-plugin</artifactId>
+	        <version>1.6.3</version>
+	        <extensions>true</extensions> 
+	     
+	     <executions> 
+	     <execution>
+	        <phase>deploy</phase>
+			<goals><goal>deploy</goal></goals>
+		 </execution>
+	     </executions>
+      
+         <configuration>
+	        <serverId>nexus</serverId>
+	        <name>admin</name>
+	        <nexusUrl>http://localhost:8082/nexus/</nexusUrl>
+	        <stagingProfileId>a3b62e8dfa2d</stagingProfileId>
+	        <skipStaging>false</skipStaging>
+	     </configuration>
+    </plugin>
+				
+	<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+	<plugin>
+		<groupId>org.eclipse.m2e</groupId>
+		<artifactId>lifecycle-mapping</artifactId>
+		<version>1.0.0</version>
+		<configuration>
+			<lifecycleMappingMetadata>
+				<pluginExecutions>
+					<pluginExecution>
+						<pluginExecutionFilter>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>
+								maven-compiler-plugin
+							</artifactId>
+							<versionRange>[3.1,)</versionRange>
+							<goals>
+								<goal>testCompile</goal>
+							</goals>
+						</pluginExecutionFilter>
+						<action>
+							<ignore></ignore>
+						</action>
+					</pluginExecution>
+				</pluginExecutions>
+			</lifecycleMappingMetadata>
+		</configuration>
+	</plugin>
+	
+	<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.13</version>
+			<configuration>
+				<includes>
+					<include>**/ProgressAllTestsSuite.java</include>
+				</includes>
+			</configuration>
+		</plugin>
+	
+	
+	
+	</plugins>		
+</pluginManagement>
+</build>
 
 </project>

@@ -1,4 +1,4 @@
-package com.sample.mvc.seleniumTests;
+/*package com.sample.mvc.seleniumTests;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,3 +41,4 @@ public class EmployeeAddSeleniumTest {
 
   
 }
+*/

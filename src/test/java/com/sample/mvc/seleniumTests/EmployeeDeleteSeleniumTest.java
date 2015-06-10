@@ -1,4 +1,4 @@
-package com.sample.mvc.seleniumTests;
+/*package com.sample.mvc.seleniumTests;
 
 
 
@@ -40,3 +40,4 @@ public class EmployeeDeleteSeleniumTest {
 
  
 }
+*/
